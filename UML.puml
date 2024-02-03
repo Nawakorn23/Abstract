@@ -1,0 +1,52 @@
+@startuml
+abstract class logic.card.BaseCard {
+- String name
+- int power
+- int health
++ <<Create>> BaseCard(String,int,int)
++ {abstract}void play(Player)
++ {abstract}boolean canPlay(Player)
++ int attack(BaseCard)
++ String getName()
++ void setName(String)
++ int getPower()
++ void setPower(int)
++ int getHealth()
++ void setHealth(int)
+}
+class logic.card.RobotCard {
+- int energyCost
++ <<Create>> RobotCard(String,int,int,int)
++ void play(Player)
++ boolean canPlay(Player)
++ int getEnergyCost()
++ void setEnergyCost(int)
+}
+class logic.card.OrbCard {
+- Element orbType
++ <<Create>> OrbCard(String,int,int,Element)
++ void play(Player)
++ boolean canPlay(Player)
++ Element getOrbType()
++ void setOrbType(Element)
+}
+enum logic.card.Element {
++  FIRE
++  WATER
++  EARTH
++  ICE
+}
+class logic.card.MageCard {
+- Element mageType
++ <<Create>> MageCard(String,int,int,Element)
++ Element getMageType()
++ void setMageType(Element)
++ void play(Player)
++ boolean canPlay(Player)
+}
+
+
+logic.card.BaseCard <|-- logic.card.RobotCard
+logic.card.BaseCard <|-- logic.card.OrbCard
+logic.card.BaseCard <|-- logic.card.MageCard
+@enduml
